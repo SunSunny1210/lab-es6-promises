@@ -69,7 +69,7 @@ obtainInstruction('steak', 0)
     document.querySelector('#steak').innerHTML += '<li>Steak is ready!</li>';
     document.querySelector('#steakImg').removeAttribute('hidden');
   }
-)
+  )
 // Iteration 3 using async/await
 function broccoliSteps(step) {
   return new Promise((resolve, reject) => {
@@ -83,13 +83,13 @@ function broccoliSteps(step) {
 }
 async function makeBroccoli() {
   try {
-   await broccoliSteps(0)
-   await broccoliSteps(1)
-   await broccoliSteps(2)
-   await broccoliSteps(3)
-   await broccoliSteps(4)
-   await broccoliSteps(5)
-   await broccoliSteps(6)
+    await broccoliSteps(0)
+    await broccoliSteps(1)
+    await broccoliSteps(2)
+    await broccoliSteps(3)
+    await broccoliSteps(4)
+    await broccoliSteps(5)
+    await broccoliSteps(6)
   } catch (error) {
     console.log(error)
   } finally {
@@ -99,4 +99,20 @@ async function makeBroccoli() {
 }
 makeBroccoli();
 // Bonus 2 - Promise all
-// ...
+let brusselsSteps = brusselsSprouts.map((step) => {
+  return new Promise((resolve) => {
+    document.querySelector('#brusselsSprouts').innerHTML += `<li>${step}</li>`
+    resolve(step);
+  })
+})
+
+Promise.all(brusselsSteps)
+  .then(() => {
+    steps.forEach((step) => {
+      document.querySelector('#brusselsSprouts').innerHTML += `<li>${step}</li>`
+    })
+  })
+  .finally(() => {
+    document.querySelector('#brusselsSprouts').innerHTML += '<li>Brussels Sprouts are ready!</li>'
+    document.querySelector('#brusselsSproutsImg').removeAttribute('hidden')
+  })
