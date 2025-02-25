@@ -40,6 +40,7 @@ getInstruction("mashedPotatoes", 0, (step1) => {
         getInstruction("mashedPotatoes", 4, (step5) => {
           document.querySelector("#mashedPotatoes").innerHTML += `<li>${step5}</li>`;
           document.querySelector("#mashedPotatoes").innerHTML += '<li>Mashed Potatoes are ready!</li>'
+          document.querySelector('#mashedPotatoesImg').removeAttribute('hidden')
         }, (error) => console.log(error));
       }, (error) => console.log(error));
     }, (error) => console.log(error));
@@ -64,7 +65,11 @@ obtainInstruction('steak', 0)
   .then(() => obtainInstruction('steak', 7))
   .then((step8) => document.querySelector("#steak").innerHTML += `<li>${step8}</li>`)
   .catch((error) => console.log(error))
-  .finally(() => document.querySelector('#steak').innerHTML += '<li>Steak is ready!</li>')
+  .finally(() => {
+    document.querySelector('#steak').innerHTML += '<li>Steak is ready!</li>';
+    document.querySelector('#steakImg').removeAttribute('hidden');
+  }
+)
 // Iteration 3 using async/await
 function broccoliSteps(step) {
   return new Promise((resolve, reject) => {
@@ -89,6 +94,7 @@ async function makeBroccoli() {
     console.log(error)
   } finally {
     document.querySelector('#broccoli').innerHTML += '<li>Broccoli is ready!</li>'
+    document.querySelector('#broccoliImg').removeAttribute('hidden');
   }
 }
 makeBroccoli();
